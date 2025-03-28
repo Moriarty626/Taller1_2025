@@ -3,15 +3,15 @@
 #include <iostream>
 
 // Constructor
-lista_Enlazada_Albumes::Lista_Enlazada_Albumes() {
+lista_Enlazada_Albumes::lista_Enlazada_Albumes() {
     cabeza = nullptr;
 }
 
 // Destructor
-lista_Enlazada_Albumes::~Lista_Enlazada_Albumes() {
-  NodoAlbum* actual = cabeza;
+lista_Enlazada_Albumes::~lista_Enlazada_Albumes() {
+  nodoAlbum* actual = cabeza;
   while (actual != nullptr) {
-    NodoAlbum* temp = actual;
+    nodoAlbum* temp = actual;
     cabeza = actual;
     actual = actual->siguiente;
     delete temp;
@@ -20,13 +20,13 @@ lista_Enlazada_Albumes::~Lista_Enlazada_Albumes() {
 }
 
 void lista_Enlazada_Albumes::insertarOrdenado(Album& nuevoAlbum) {
-  NodoAlbum* nuevoNodo  = new NodoAlbum(nuevoAlbum);
+  nodoAlbum* nuevoNodo  = new nodoAlbum(nuevoAlbum);
   		if (!cabeza || nuevoAlbum.getId() < cabeza->album.getId()) {
 			nuevoNodo->siguiente = cabeza;
             cabeza = nuevoNodo;
             return;
   		}
-  NodoAlbum* actual = cabeza;
+  nodoAlbum* actual = cabeza;
   while (actual->siguiente && actual->album.getId() < nuevoAlbum.getId()) {
     actual = actual->siguiente;
   }
@@ -34,25 +34,8 @@ void lista_Enlazada_Albumes::insertarOrdenado(Album& nuevoAlbum) {
   actual->siguiente = nuevoNodo;
 }
 
-// buscar album po ID
-Album* lista_Enlazada_Albumes::buscarAlbum(std::string& titulo) {
-	if (!cabeza) return false;
-      if (cabeza->album.getId() == titulo) {
-        NodoAlbum* temp = cabeza;
-        cabeza = cabeza->siguiente;
-        delete temp;
-        return true;
-      }
-      NodoAlbum* actual = cabeza;
-      while (actual && actual->album.getId() < titulo) {
-        actual = actual->siguiente;
-      }
-      if (actual -> siguiente) {
-        NodoAlbum* temp = actual->siguiente;
-        actual->siguiente = temp->siguiente;
-        delete temp;
-        return true;
-      }
-      return false;
+// buscar album por ID
+Album* lista_Enlazada_Albumes::buscarAlbum(int id) {
+
 
 }

@@ -7,5 +7,5 @@
 Gestor_De_Canciones::Gestor_De_Canciones() {
   cant_Canciones = 0;
   total_Canciones = 5;
-  canciones = new cancion[total_Canciones];
+
 }
