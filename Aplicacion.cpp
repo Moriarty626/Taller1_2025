@@ -15,7 +15,7 @@ void Aplicacion::cargarDatos() {
     std::cout << "Datos cargados correctamente.\n";
 }
 
-void Aplicacion::cargarAlbumesCSV(std::string &nombreArchivo) {
+void Aplicacion::cargarAlbumesCSV(const std::string &nombreArchivo) {
     std::ifstream archivo(nombreArchivo); // Abro el archivo en modo lectura
     if (!archivo.is_open()) {
         std::cerr << "Error al abrir el archivo " << nombreArchivo << std::endl;
@@ -57,7 +57,7 @@ void Aplicacion::cargarAlbumesCSV(std::string &nombreArchivo) {
     archivo.close();
 }
 
-void Aplicacion::cargarCancionesCSV(std::string &nombreArchivo) {
+void Aplicacion::cargarCancionesCSV(const std::string &nombreArchivo) {
     std::ifstream archivo(nombreArchivo);
     if (!archivo.is_open()) {
         std::cerr << "Error al abrir el archovo " << nombreArchivo << std::endl;

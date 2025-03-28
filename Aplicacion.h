@@ -20,8 +20,8 @@ public:
     void cargarDatos();
     void mostrarMenu();
     void ejecutar();
-    void cargarAlbumesCSV(std::string& nombreArchivo);
-    void cargarCancionesCSV(std::string& nombreArchivo);
+    void cargarAlbumesCSV(const std::string& nombreArchivo);
+    void cargarCancionesCSV(const std::string& nombreArchivo);
 
 };
 
