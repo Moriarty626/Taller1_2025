@@ -1,29 +1,30 @@
 
-
-#ifndef GESTOR_DE_CANCIONES_H
 #define GESTOR_DE_CANCIONES_H
+#ifndef GESTOR_CANCIONES_H
+#define GESTOR_CANCIONES_H
 
 #include "cancion.h"
 
-class Gestor_De_Canciones {
-
+class GestorCanciones {
 private:
-  cancion* canciones;
-  int cant_Canciones;
-  int total_Canciones;
+  cancion* canciones;  // Puntero a un arreglo dinámico
+  int cantidad;
+  int capacidad;
+
+  // Método privado para redimensionar el arreglo dinámico
+  void redimensionar(int nuevaCapacidad);
 
 public:
   // Constructor y destructor
-  Gestor_De_Canciones();
-  ~Gestor_De_Canciones();
+  GestorCanciones();
+  ~GestorCanciones();
 
-  // Metodos principales
-  void agregar_Cancion(cancion& nueva_Cancion);
-  cancion* buscar_Cancion(int id);
-  void ordenar_Canciones(bool ascendente);
-  void mostrar_Canciones();
+  // Métodos principales
+  void agregarCancion(const cancion& nuevaCancion);
+  bool eliminarCancion(int id);
+  cancion* buscarCancion(int id);
+  void ordenarCanciones(bool ascendente);
+  void mostrarCanciones() const;
 };
 
-
-
-#endif //GESTOR_DE_CANCIONES_H
+#endif // GESTOR_CANCIONES_H
