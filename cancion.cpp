@@ -1,6 +1,15 @@
-
 #include "cancion.h"
 
+// Constructor por defecto
+cancion::cancion() {
+    id_cancion = 0;
+    album_id = 0;
+    titulo = "";
+    reproducciones = 0;
+    duracion = "0:00";
+}
+
+// Constructor con parámetros
 cancion::cancion(int id_Cancion, int id_album, std::string titulo, int reproducciones, std::string duracion) {
     this->id_cancion = id_Cancion;
     this->album_id = id_album;
@@ -9,46 +18,38 @@ cancion::cancion(int id_Cancion, int id_album, std::string titulo, int reproducc
     this->duracion = duracion;
 }
 
-int cancion::getId() {
+// Destructor
+cancion::~cancion() {
+    // Si en el futuro hay memoria dinámica, se liberaría aquí.
+}
+
+// Métodos getters
+int cancion::getId() const {
     return id_cancion;
 }
 
-int cancion::getAlbumId() {
+int cancion::getAlbumId() const{
     return album_id;
 }
 
-std::string cancion::getTitulo() {
+std::string cancion::getTitulo() const {
     return titulo;
 }
 
-int cancion::getReproducciones() {
+int cancion::getReproducciones() const {
     return reproducciones;
 }
 
-std::string cancion::getDuracion() {
+std::string cancion::getDuracion() const {
     return duracion;
 }
 
-void cancion::setTitulo(std::string nuevoTitulo) {
-    this->titulo = nuevoTitulo;
+// Verificar si el título coincide con el filtro
+bool cancion::coincideTitulo(const std::string &filtro) const {
+    return titulo == filtro;
 }
 
-void cancion::setReproducciones(int nuevasReproducciones) {
-    this->reproducciones = nuevasReproducciones;
-}
-
-void cancion::setDuracion(std::string nuevaDuracion) {
-    this->duracion = nuevaDuracion;
-}
-
-void cancion::mostrarInfo(){
-    this -> id_cancion = getId();
-}
-
-bool cancion::coincideTitulo(std::string &filtro){
-    this->titulo = filtro;
-}
-
-bool cancion::operator<( cancion &otra){
-    return this->id_cancion < otra.getId();
+// Operador de comparación para ordenar canciones por ID
+bool cancion::operator<(const cancion &otra) const {
+    return id_cancion < otra.id_cancion;
 }

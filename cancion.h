@@ -1,11 +1,6 @@
-//
-// Created by mauri on 24-03-2025.
-//
-
 #ifndef CANCION_H
 #define CANCION_H
 
-#include <iostream>
 #include <string>
 
 class cancion {
@@ -17,25 +12,24 @@ private:
     std::string duracion; // Duración en formato "MM:SS"
 
 public:
+    cancion();
+
     cancion(int id_Cancion, int id_album, std::string titulo, int reproducciones, std::string duracion);
 
+    ~cancion();
+
     // Getters
-    int getId();
-    int getAlbumId();
-    std::string getTitulo();
-    int getReproducciones();
-    std::string getDuracion();
+    int getId() const;
+    int getAlbumId() const;
+    std::string getTitulo() const;
+    int getReproducciones() const;
+    std::string getDuracion() const;
 
-    // Setters
-    void setTitulo(std::string nuevoTitulo);
-    void setReproducciones(int nuevasReproducciones);
-    void setDuracion(std::string nuevaDuracion);
-
-    void mostrarInfo();  // Muestra la información de la canción
-    bool coincideTitulo(std::string& filtro);  // Verifica si el título coincide con una búsqueda
+    // Método para verificar si un título coincide con el filtro
+    bool coincideTitulo(const std::string &filtro) const;
 
     // Sobrecarga de operadores
-    bool operator<(cancion& otra);  // Para ordenar por reproducciones
+    bool operator<(const cancion &otra) const; // Para ordenar por reproducciones
 
 };
 

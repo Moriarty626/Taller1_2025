@@ -1,30 +1,33 @@
+#ifndef CANCION_H
+#define CANCION_H
 
-
-#ifndef APLICACION_H
-#define APLICACION_H
-
-#include "album.h"
-#include "cancion.h"
-#include "lista_Enlazada_Canciones.h"  // Clase para manejar la lista de álbumes
-#include "Gestor_De_Canciones.h"       // Clase para manejar el arreglo dinámico de canciones
-
-class Aplicacion {
+class cancion {
 private:
-    lista_Enlazada_Canciones listaAlbumes;
-    Gestor_De_Canciones gestorCanciones;
+    int id_cancion;
+    int album_id;
+    std::string titulo;
+    int reproducciones;
+    std::string duracion;
+
 public:
-    // Constructor
-    Aplicacion();
+    // Constructor por defecto
+    cancion();
 
-    // Metodos principales
-    void cargarDatos();
-    void mostrarMenu();
-    void ejecutar();
-    void cargarAlbumesCSV(const std::string& nombreArchivo);
-    void cargarCancionesCSV(const std::string& nombreArchivo);
+    // Constructor con parámetros
+    cancion(int id_Cancion, int id_album, std::string titulo, int reproducciones, std::string duracion);
 
+    // Destructor
+    ~cancion();
+
+    // Métodos getters
+    int getId() const;
+    int getAlbumId() const;
+    std::string getTitulo() const;
+    int getReproducciones() const;
+    std::string getDuracion() const;
+
+    // Sobrecarga de operadores
+    bool operator<(const cancion &otra) const;
 };
 
-
-
-#endif //APLICACION_H
+#endif // CANCION_H
