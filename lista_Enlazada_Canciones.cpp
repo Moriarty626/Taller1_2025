@@ -22,14 +22,14 @@ lista_Enlazada_Canciones::~lista_Enlazada_Canciones() {
 void lista_Enlazada_Canciones::insertarOrdenado(Album &nuevoAlbum) {
   nodoAlbum* nuevoNodo = new nodoAlbum(nuevoAlbum);
 
-  if (!cabeza || nuevoAlbum.getId() < cabeza->album.getId()) {
+  if (!cabeza || nuevoAlbum.getID() < cabeza->album.getID()) {
         nuevoNodo->siguiente = cabeza;
         cabeza = nuevoNodo;
         return;
   }
 
   nodoAlbum* actual = cabeza;
-  while (actual->siguiente && nuevoAlbum.getId() < actual->album.getId()) {
+  while (actual->siguiente && nuevoAlbum.getID() < actual->album.getID()) {
         actual = actual->siguiente;
   }
 
@@ -41,7 +41,7 @@ void lista_Enlazada_Canciones::insertarOrdenado(Album &nuevoAlbum) {
 Album* lista_Enlazada_Canciones::buscarAlbum(int id) {
   nodoAlbum* actual = cabeza;
   while (actual) {
-    if (actual->album.getId() == id) {
+    if (actual->album.getID() == id) {
       return &(actual -> album);
     }
     actual = actual -> siguiente;

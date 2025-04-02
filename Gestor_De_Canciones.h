@@ -25,6 +25,7 @@ public:
   Cancion* buscarCancion(int id);
   void ordenarCanciones(bool ascendente);
   void mostrarCanciones() const;
+  void GestorCanciones::mostrarInfoCancion(int id) const;
 };
 
 #endif // GESTOR_CANCIONES_H

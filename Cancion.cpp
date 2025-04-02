@@ -1,4 +1,5 @@
 #include "Cancion.h"
+#include <iostream>
 
 // Constructor por defecto
 Cancion::Cancion() {
@@ -47,4 +48,13 @@ bool Cancion::coincideTitulo(const std::string &filtro) const {
 // Operador de comparación para ordenar canciones por ID
 bool Cancion::operator<(const Cancion &otra) const {
     return id_cancion < otra.id_cancion;
+}
+
+// Método para mostrar información de la canción
+void Cancion::mostrarInfo() const {
+    std::cout << "ID: " << id_cancion << "\n";
+    std::cout << "Título: " << titulo << "\n";
+    std::cout << "Álbum ID: " << album_id << "\n";
+    std::cout << "Reproducciones: " << reproducciones << "\n";
+    std::cout << "Duración: " << duracion << "\n";
 }

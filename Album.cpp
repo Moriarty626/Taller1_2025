@@ -1,4 +1,3 @@
-
 #include "Album.h"
 
 // Constructor
@@ -16,6 +15,35 @@ Album::Album(int id, std::string titulo, int anio, bool es_De_Estudio) {
 // Destructor
 Album::~Album() {
     free(canciones); // Liberar memoria al destruir el objeto
+}
+
+// Getters
+int Album::getID() const {
+    return id;
+}
+
+std::string Album::getTitulo() const {
+    return titulo;
+}
+
+int Album::getAnio() const {
+    return anio;
+}
+
+bool Album::getEsDeEstudio() const {
+    return es_De_Estudio;
+}
+
+int Album::getCantidadCanciones() const {
+    return cantidadCanciones;
+}
+
+int Album::getCapacidad() const {
+    return capacidad;
+}
+
+int* Album::getCanciones() const {
+    return canciones;
 }
 
 // Redimensionar el arreglo dinámico cuando sea necesario
@@ -73,6 +101,7 @@ void Album::mostrarInfo() {
     }
     std::cout << "---------------------------" << std::endl;
 }
+
 
 
 

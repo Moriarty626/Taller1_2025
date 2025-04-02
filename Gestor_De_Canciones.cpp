@@ -1,12 +1,12 @@
-#include <iostream>
 #include "Gestor_De_Canciones.h"
 #include "cancion.h"
+#include <iostream>
 
 // Constructor
 GestorCanciones::GestorCanciones() {
     capacidad = 5;
     cantidad = 0;
-    canciones = (cancion*) malloc(capacidad * sizeof(cancion));
+    canciones = (Cancion*) malloc(capacidad * sizeof(Cancion));
 
     if (!canciones) {
         std::cerr << "Error: No se pudo asignar memoria." << std::endl;
@@ -21,7 +21,7 @@ GestorCanciones::~GestorCanciones() {
 
 // Método privado para redimensionar el arreglo dinámico
 void GestorCanciones::redimensionar(int nuevaCapacidad) {
-    cancion* nuevoArreglo = (cancion*) realloc(canciones, nuevaCapacidad * sizeof(cancion));
+    Cancion* nuevoArreglo = (Cancion*) realloc(canciones, nuevaCapacidad * sizeof(Cancion));
 
     if (!nuevoArreglo) {
         std::cerr << "Error: No se pudo redimensionar el arreglo." << std::endl;
@@ -33,7 +33,7 @@ void GestorCanciones::redimensionar(int nuevaCapacidad) {
 }
 
 // Agregar una canción al arreglo dinámico
-void GestorCanciones::agregarCancion(const cancion& nuevaCancion) {
+void GestorCanciones::agregarCancion(const Cancion& nuevaCancion) {
     // Si el arreglo está lleno, duplicamos la capacidad
     if (cantidad == capacidad) {
         redimensionar(capacidad * 2);
@@ -76,7 +76,7 @@ bool GestorCanciones::eliminarCancion(int id) {
 }
 
 // Buscar una canción por ID
-cancion* GestorCanciones::buscarCancion(int id) {
+Cancion* GestorCanciones::buscarCancion(int id) {
     for (int i = 0; i < cantidad; i++) {
         if (canciones[i].getId() == id) {
             return &canciones[i];
@@ -92,7 +92,7 @@ void GestorCanciones::ordenarCanciones(bool ascendente) {
             bool condicion = ascendente ? canciones[j].getReproducciones() > canciones[j + 1].getReproducciones()
                                         : canciones[j].getReproducciones() < canciones[j + 1].getReproducciones();
             if (condicion) {
-                cancion temp = canciones[j];
+                Cancion temp = canciones[j];
                 canciones[j] = canciones[j + 1];
                 canciones[j + 1] = temp;
             }
@@ -105,4 +105,15 @@ void GestorCanciones::mostrarCanciones() const {
     for (int i = 0; i < cantidad; i++) {
         canciones[i].mostrarInfo();
     }
+}
+
+// Mostrar la información de una canción específica por ID
+void GestorCanciones::mostrarInfoCancion(int id) const {
+    for (int i = 0; i < cantidad; i++) {
+        if (canciones[i].getId() == id) {
+            canciones[i].mostrarInfo();
+            return;
+        }
+    }
+    std::cout << "Cancion con ID " << id << " no encontrada." << std::endl;
 }

@@ -25,7 +25,7 @@ public:
 
     // Método para verificar si un título coincide con el filtro
     bool coincideTitulo(const std::string &filtro) const;
-
+    void Cancion::mostrarInfo() const;
     // Sobrecarga de operadores
     bool operator<(const Cancion &otra) const; // Para ordenar por reproducciones
 
