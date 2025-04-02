@@ -1,4 +1,4 @@
-#include "Cancion.h"
+#include "../Cancion.h"
 #include <iostream>
 
 // Constructor por defecto
