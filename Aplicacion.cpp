@@ -9,12 +9,6 @@ using std::cin;
 // Constructor
 Aplicacion::Aplicacion() {}
 
-void Aplicacion::cargarDatos() {
-    cargarAlbumesCSV("albumes.csv");
-    cargarCancionesCSV("canciones.csv");
-    std::cout << "Datos cargados correctamente.\n";
-}
-
 void Aplicacion::cargarAlbumesCSV(const std::string &nombreArchivo) {
     std::ifstream archivo(nombreArchivo); // Abro el archivo en modo lectura
     if (!archivo.is_open()) {
@@ -83,11 +77,22 @@ void Aplicacion::cargarCancionesCSV(const std::string &nombreArchivo) {
 
         // Crear la cancion y agregarla al gestor
         Cancion nuevaCancion(id,album,titulo,reproducciones,duracion);
-        gestorCanciones.agregar_Cancion(nuevaCancion);
+        gestorCanciones.agregarCancion(nuevaCancion);
     }
     archivo.close();
 }
 
+
+void Aplicacion::cargarDatos() {
+    cargarAlbumesCSV("albumes.csv");
+    cargarCancionesCSV("canciones.csv");
+    std::cout << "Datos cargados correctamente.\n";
+}
+
+void Aplicacion::ejecutar() {
+    cargarDatos();
+    mostrarMenu();
+}
 
 
 void Aplicacion::mostrarMenu() {
@@ -123,7 +128,7 @@ void Aplicacion::mostrarMenu() {
                 cout << "Ingrese el titulo del album: \n";
                 cin.ignore();
                 std::getline(cin, titulo);
-                    if (listaAlbumes.eliminarAlbum(titulo)) {
+                    if (listaAlbumes.eliminarAlbum(album->getTitulo())) {
                         cout << "Album eliminado con exito :) \n";
                     }else {
                         cout << "Album no encontrado :( \n";
@@ -145,8 +150,5 @@ void Aplicacion::mostrarMenu() {
 
 }
 
-void Aplicacion::ejecutar() {
-    cargarDatos();
-    mostrarMenu();
-}
+
 
