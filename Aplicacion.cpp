@@ -82,7 +82,7 @@ void Aplicacion::cargarCancionesCSV(const std::string &nombreArchivo) {
 
 
         // Crear la cancion y agregarla al gestor
-        cancion nuevaCancion(id,album,titulo,reproducciones,duracion);
+        Cancion nuevaCancion(id,album,titulo,reproducciones,duracion);
         gestorCanciones.agregar_Cancion(nuevaCancion);
     }
     archivo.close();

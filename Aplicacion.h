@@ -1,7 +1,7 @@
 #ifndef CANCION_H
 #define CANCION_H
 
-class cancion {
+class Cancion {
 private:
     int id_cancion;
     int album_id;
@@ -11,13 +11,13 @@ private:
 
 public:
     // Constructor por defecto
-    cancion();
+    Cancion();
 
     // Constructor con parámetros
-    cancion(int id_Cancion, int id_album, std::string titulo, int reproducciones, std::string duracion);
+    Cancion(int id_Cancion, int id_album, std::string titulo, int reproducciones, std::string duracion);
 
     // Destructor
-    ~cancion();
+    ~Cancion();
 
     // Métodos getters
     int getId() const;
@@ -27,7 +27,7 @@ public:
     std::string getDuracion() const;
 
     // Sobrecarga de operadores
-    bool operator<(const cancion &otra) const;
+    bool operator<(const Cancion &otra) const;
 };
 
 #endif // CANCION_H

@@ -1,0 +1,55 @@
+#include "Cancion.h"
+
+// Constructor por defecto
+Cancion::Cancion() {
+    id_cancion = 0;
+    album_id = 0;
+    titulo = "";
+    reproducciones = 0;
+    duracion = "0:00";
+}
+
+// Constructor con parámetros
+Cancion::Cancion(int id_Cancion, int id_album, std::string titulo, int reproducciones, std::string duracion) {
+    this->id_cancion = id_Cancion;
+    this->album_id = id_album;
+    this->titulo = titulo;
+    this->reproducciones = reproducciones;
+    this->duracion = duracion;
+}
+
+// Destructor
+Cancion::~Cancion() {
+    // Si en el futuro hay memoria dinámica, se liberaría aquí.
+}
+
+// Métodos getters
+int Cancion::getId() const {
+    return id_cancion;
+}
+
+int Cancion::getAlbumId() const{
+    return album_id;
+}
+
+std::string Cancion::getTitulo() const {
+    return titulo;
+}
+
+int Cancion::getReproducciones() const {
+    return reproducciones;
+}
+
+std::string Cancion::getDuracion() const {
+    return duracion;
+}
+
+// Verificar si el título coincide con el filtro
+bool Cancion::coincideTitulo(const std::string &filtro) const {
+    return titulo == filtro;
+}
+
+// Operador de comparación para ordenar canciones por ID
+bool Cancion::operator<(const Cancion &otra) const {
+    return id_cancion < otra.id_cancion;
+}
