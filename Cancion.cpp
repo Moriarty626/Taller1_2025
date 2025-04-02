@@ -18,11 +18,6 @@ Cancion::Cancion(int id_Cancion, int id_album, std::string titulo, int reproducc
     this->duracion = duracion;
 }
 
-// Destructor
-Cancion::~Cancion() {
-    // Si en el futuro hay memoria dinámica, se liberaría aquí.
-}
-
 // Métodos getters
 int Cancion::getId() const {
     return id_cancion;

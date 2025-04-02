@@ -7,7 +7,7 @@
 
 class GestorCanciones {
 private:
-  cancion* canciones;  // Puntero a un arreglo dinámico
+  Cancion* canciones;  // Puntero a un arreglo dinámico
   int cantidad;
   int capacidad;
 
@@ -20,9 +20,9 @@ public:
   ~GestorCanciones();
 
   // Métodos principales
-  void agregarCancion(const cancion& nuevaCancion);
+  void agregarCancion(const Cancion& nuevaCancion);
   bool eliminarCancion(int id);
-  cancion* buscarCancion(int id);
+  Cancion* buscarCancion(int id);
   void ordenarCanciones(bool ascendente);
   void mostrarCanciones() const;
 };

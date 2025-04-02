@@ -16,8 +16,6 @@ public:
 
     Cancion(int id_Cancion, int id_album, std::string titulo, int reproducciones, std::string duracion);
 
-    ~Cancion();
-
     // Getters
     int getId() const;
     int getAlbumId() const;
